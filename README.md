@@ -1,9 +1,9 @@
-# PyTorch libtorch minimal using build_libtorch.py
+# Build minimal PyTorch using setup.py
 This CMakeLists.txt manages the building of a minimal PyTorch library from [PyTorch 1.7.0](https://github.com/pytorch/pytorch/tree/v1.7.0) by setting environment variables and calling [pytorch/setup.py](https://github.com/pytorch/pytorch/blob/v1.7.0/setup.py)
 ## Prerequisites
 1. Clone [PyTorch 1.7.0](https://github.com/pytorch/pytorch/tree/1.7.0) and adjust the [CMakeLists.txt](CMakeLists.txt) variable `PYTORCH_SRC_DIR` to point to the local repository, for example `set(PYTORCH_SRC_DIR ../pytorch)`
 2. Install the [PyTorch prerequisites](https://github.com/pytorch/pytorch/tree/1.7.0#from-source)
-## Equivalent bash script (inspired by C++ development tips](https://github.com/pytorch/pytorch/blob/v1.7.0/CONTRIBUTING.md#c-development-tips)
+## Equivalent bash script [inspired by C++ development tips](https://github.com/pytorch/pytorch/blob/v1.7.0/CONTRIBUTING.md#c-development-tips)
     cd pytorch
     git restore :/
     git clean -dfx
