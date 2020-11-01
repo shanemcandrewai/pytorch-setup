@@ -5,8 +5,6 @@ This CMakeLists.txt manages the building of a minimal PyTorch library from [PyTo
 2. Install the [PyTorch prerequisites](https://github.com/pytorch/pytorch/tree/1.7.0#from-source)
 ## Equivalent bash script [inspired by C++ development tips](https://github.com/pytorch/pytorch/blob/v1.7.0/CONTRIBUTING.md#c-development-tips)
     cd pytorch
-    git restore :/
-    git clean -dfx
     export DEBUG=1
     export BUILD_TEST=0
     export USE_CUDA=0
@@ -18,10 +16,14 @@ This CMakeLists.txt manages the building of a minimal PyTorch library from [PyTo
     export USE_XNNPACK=0
     export BUILD_PYTHON=0
     export BUILD_CAFFE2_OPS=0
-    python setup.py
+    export BUILD_PYTHON=0
+    python setup.py build --cmake-only
+    cmake --build build
 ## Usage
-### Generate and build
+### Generate the project buildsystem
     cmake -S . -B build
+### Build the Pytoch project
+    cmake --build [Pytoch directory]/build
 #### Cmake options
 ##### RESET
 Restore and clean the PyTorch source working tree from HEAD.
@@ -34,6 +36,8 @@ The default buid type is `Release`. For a debug build pass option `-D CMAKE_BUIL
 ##### CMAKE_CXX_FLAGS
 ###### GCC
 `-Og` enables optimizations that do not interfere with debugging
+##### TRACE
+Insert --trace-expand in ${PYTORCH_SRC_DIR}/tools/setup_helpers/cmake.py
 #### Example
     cmake -DRESET=1 -DCMAKE_CXX_FLAGS=-Og -DCMAKE_BUILD_TYPE=Debug -S . -B build
 ### Location of built libraries
