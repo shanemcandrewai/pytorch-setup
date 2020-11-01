@@ -23,7 +23,12 @@ This CMakeLists.txt manages the building of a minimal PyTorch library from [PyTo
 ### Generate the project buildsystem
     cmake -S . -B build
 ### Build the Pytoch project
-    cmake --build [Pytoch directory]/build
+    cmake --build [PyTorch directory]/build
+### Example
+    cmake -DRESET=1 -DCMAKE_CXX_FLAGS=-Og -DCMAKE_BUILD_TYPE=Debug -S . -B build
+    cmake --build ../pytorch/build
+### Results
+Libraries can be found in `[PyTorch directory]/bin/lib` and `[PyTorch directory]/bin/bin`
 #### Cmake options
 ##### RESET
 Restore and clean the PyTorch source working tree from HEAD.
@@ -38,8 +43,6 @@ The default buid type is `Release`. For a debug build pass option `-D CMAKE_BUIL
 `-Og` enables optimizations that do not interfere with debugging
 ##### TRACE
 Insert --trace-expand in ${PYTORCH_SRC_DIR}/tools/setup_helpers/cmake.py
-#### Example
-    cmake -DRESET=1 -DCMAKE_CXX_FLAGS=-Og -DCMAKE_BUILD_TYPE=Debug -S . -B build
 ### Location of built libraries
     pytorch/build/lib
 ### Cleaning / trouble-shooting
