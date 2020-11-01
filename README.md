@@ -29,11 +29,9 @@ This CMakeLists.txt manages the building of a minimal PyTorch library from [PyTo
     cmake --build ../pytorch/build
 ### Results
 Libraries can be found in `[PyTorch directory]/bin/lib` and `[PyTorch directory]/bin/bin`
-#### Cmake options
+#### CMake options
 ##### RESET
 Restore and clean the PyTorch source working tree from HEAD.
-##### NO_BUILD_SHARED_LIBS
-The build generates a shared library by default. This can be disabled by passing the option `-D NO_BUILD_SHARED_LIBS=1`.
 ##### USE_STATIC_DISPATCH
 The build does not use static dispatch for ATen operators by default. This can be enabled by passing the option `-D USE_STATIC_DISPATCH=1`.
 ##### CMAKE_BUILD_TYPE 
@@ -43,6 +41,9 @@ The default buid type is `Release`. For a debug build pass option `-D CMAKE_BUIL
 `-Og` enables optimizations that do not interfere with debugging
 ##### TRACE
 Insert --trace-expand in ${PYTORCH_SRC_DIR}/tools/setup_helpers/cmake.py
+#### CMake varaibles
+##### BUILD_SHARED_LIBS
+The build does not generate shared libraries by default. This can be enabled by passing the option `-D NO_BUILD_SHARED_LIBS=1`.
 ### Location of built libraries
     pytorch/build/lib
 ### Cleaning / trouble-shooting
