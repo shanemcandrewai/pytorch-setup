@@ -22,7 +22,7 @@ This CMakeLists.txt manages the building of a minimal PyTorch library from [PyTo
 ## Usage
 ### Generate the project buildsystem
     cmake -S . -B build
-### Build the Pytoch project
+### Build the PyTorch project
     cmake --build [PyTorch directory]/build
 ### Example
     cmake -DRESET=1 -DCMAKE_CXX_FLAGS=-Og -DCMAKE_BUILD_TYPE=Debug -S . -B build
