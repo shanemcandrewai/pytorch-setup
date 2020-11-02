@@ -34,12 +34,12 @@ This CMakeLists.txt manages the building of a minimal PyTorch library from [PyTo
 ### CMake variables in `${PYTORCH_SRC_DIR}/build/CMakeCache.txt`
 #### BUILD_PYTHON
 If `BUILD_PYTHON=ON` is set, the builds fails with -
-`CMake Error at cmake/Dependencies.cmake:926 (if):
-   if given arguments:
+    CMake Error at cmake/Dependencies.cmake:926 (if):
+    if given arguments:
 
-	"VERSION_LESS" "3"
+    "VERSION_LESS" "3"
 
-      Unknown arguments specified`
+    Unknown arguments specified`
 #### CMAKE_BUILD_TYPE 
 The default build type is `Release`. The environmental variable `DEBUG=1`, sets `CMAKE_BUILD_TYPE=Debug`
 #### BUILD_SHARED_LIBS
