@@ -4,7 +4,6 @@ project(build_libtorch)
 
 set(PYTORCH_SRC_DIR ../pytorch)
 
-option(BUILD_PYTHON "Build Python binaries" OFF)
 set(ENV{DEBUG} 1) #will enable debug builds (-g -O0)
 set(ENV{BUILD_TEST} 0) # will disable building C++ test binaries
 set(ENV{USE_CUDA} 0) #disable compiling CUDA, to save compile time
@@ -15,21 +14,6 @@ set(ENV{USE_NNPACK} 0) #disable compiling with NNPACK
 set(ENV{USE_QNNPACK} 0) #disable QNNPACK build (quantized 8-bit operators)
 set(ENV{USE_XNNPACK} 0) #disable compiling with XNNPACK
 set(ENV{BUILD_CAFFE2_OPS} 0) #Build Caffe2 operators
-
-file(READ ${PYTORCH_SRC_DIR}/setup.py FILE_CONTENTS)
-if(BUILD_PYTHON)
-  string(FIND "${FILE_CONTENTS}" "build_python=False" POS)
-  if(NOT ${POS} EQUAL -1)
-    string(REPLACE "build_python=False" "build_python=True" FILE_CONTENTS "${FILE_CONTENTS}")
-    file(WRITE ${PYTORCH_SRC_DIR}/setup.py "${FILE_CONTENTS}")
-  endif()
-else()
-  string(FIND "${FILE_CONTENTS}" "build_python=True" POS)
-  if(NOT ${POS} EQUAL -1)
-    string(REPLACE "build_python=True" "build_python=False" FILE_CONTENTS "${FILE_CONTENTS}")
-    file(WRITE ${PYTORCH_SRC_DIR}/setup.py "${FILE_CONTENTS}")
-  endif()
-endif()
 
 if(NOT MSVC)
   file(READ ${PYTORCH_SRC_DIR}/CMakeLists.txt FILE_CONTENTS)

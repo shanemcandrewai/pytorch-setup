@@ -26,21 +26,24 @@ This CMakeLists.txt manages the building of a minimal PyTorch library from [PyTo
 ### Example
     cmake ---S . -B build
     cmake --build ../pytorch/build
-### Results
-Libraries can be found in `${PYTORCH_SRC_DIR}/build/lib` and `${PYTORCH_SRC_DIR}/build/bin`
-#### CMake options
-##### CMAKE_BUILD_TYPE 
-The default buid type is `Release`. For a debug build pass option `-D CMAKE_BUILD_TYPE=Debug`
-##### CMAKE_CXX_FLAGS
-###### GCC
-`-Og` enables optimizations that do not interfere with debugging
-##### TRACE
-Insert --trace-expand in ${PYTORCH_SRC_DIR}/tools/setup_helpers/cmake.py
-#### CMake varaibles
-##### BUILD_SHARED_LIBS
-The build does not generate shared libraries by default. This can be enabled by passing the option `-D NO_BUILD_SHARED_LIBS=1`.
 ### Location of built libraries
     pytorch/build/lib
+### CMAKE_CXX_FLAGS
+#### GCC
+`-Og` enables optimizations that do not interfere with debugging. This CMakeList project adjusts ${PYTORCH_SRC_DIR}/CMakeLists.txt when necessary
+### CMake variables in `${PYTORCH_SRC_DIR}/build/CMakeCache.txt`
+#### BUILD_PYTHON
+If `BUILD_PYTHON=ON` is set, the builds fails with -
+    CMake Error at cmake/Dependencies.cmake:926 (if):
+      if given arguments:
+
+	"VERSION_LESS" "3"
+
+      Unknown arguments specified
+#### CMAKE_BUILD_TYPE 
+The default build type is `Release`. The environmental variable DEBUG=1, sets CMAKE_BUILD_TYPE=Debug`
+#### BUILD_SHARED_LIBS
+The build generates shared libraries by default. This can be disabled by setting it to `OFF`
 ### Cleaning / trouble-shooting
 #### Linux
     rm build/CMakeCache.txt
