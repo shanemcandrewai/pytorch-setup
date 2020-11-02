@@ -30,12 +30,12 @@ This CMakeLists.txt manages the building of a minimal PyTorch library from [PyTo
     pytorch/build/lib
 ### CMAKE_CXX_FLAGS
 #### GCC
-`-Og` enables optimizations that do not interfere with debugging. This CMakeList project adjusts ${PYTORCH_SRC_DIR}/CMakeLists.txt when necessary
+`-Og` enables optimizations that do not interfere with debugging. This CMakeList project adjusts `${PYTORCH_SRC_DIR}/CMakeLists.txt` when necessary
 ### CMake variables in `${PYTORCH_SRC_DIR}/build/CMakeCache.txt`
 #### BUILD_PYTHON
 If `BUILD_PYTHON=ON` is set, the builds fails with -
-`    CMake Error at cmake/Dependencies.cmake:926 (if):
-      if given arguments:
+`CMake Error at cmake/Dependencies.cmake:926 (if):
+   if given arguments:
 
 	"VERSION_LESS" "3"
 
