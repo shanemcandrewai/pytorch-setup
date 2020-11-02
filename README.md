@@ -14,26 +14,21 @@ This CMakeLists.txt manages the building of a minimal PyTorch library from [PyTo
     export USE_NNPACK=0
     export USE_QNNPACK=0
     export USE_XNNPACK=0
-    export BUILD_PYTHON=0
     export BUILD_CAFFE2_OPS=0
-    export BUILD_PYTHON=0
+    [see below for minor edits to PyTorch tree]
     python setup.py build --cmake-only
     cmake --build build
 ## Usage
 ### Generate the project buildsystem
     cmake -S . -B build
 ### Build the PyTorch project
-    cmake --build [PyTorch directory]/build
+    cmake --build ${PYTORCH_SRC_DIR}/build
 ### Example
-    cmake -DRESET=1 -DCMAKE_CXX_FLAGS=-Og -DCMAKE_BUILD_TYPE=Debug -S . -B build
+    cmake ---S . -B build
     cmake --build ../pytorch/build
 ### Results
-Libraries can be found in `[PyTorch directory]/bin/lib` and `[PyTorch directory]/bin/bin`
+Libraries can be found in `${PYTORCH_SRC_DIR}/build/lib` and `${PYTORCH_SRC_DIR}/build/bin`
 #### CMake options
-##### RESET
-Restore and clean the PyTorch source working tree from HEAD.
-##### USE_STATIC_DISPATCH
-The build does not use static dispatch for ATen operators by default. This can be enabled by passing the option `-D USE_STATIC_DISPATCH=1`.
 ##### CMAKE_BUILD_TYPE 
 The default buid type is `Release`. For a debug build pass option `-D CMAKE_BUILD_TYPE=Debug`
 ##### CMAKE_CXX_FLAGS
