@@ -21,16 +21,20 @@ This CMakeLists.txt manages the building of a minimal PyTorch library from [PyTo
 ## Usage
 ### Generate the project buildsystem
     cmake -S . -B build
-### Adjust `${PYTORCH_SRC_DIR}/build/CMakeCache.txt`
-#### BUILD_PYTHON
-If `BUILD_PYTHON=ON` is set, the builds fails with
+#### [CMakeList.txt](CMakeList.txt) adjusts the following in `${PYTORCH_SRC_DIR}/CMakeLists.txt`
+##### GCC
+`-Og` enables optimizations that do not interfere with debugging. This replaces in -O2 in CMAKE_CXX_FLAGS
+#### [CMakeList.txt](CMakeList.txt) adjusts the following in `${PYTORCH_SRC_DIR}/cmake/Dependencies.cmake`
+#### Remove deprecated `find_package(PythonLibs 3.0)`
+This avoids the following error -
 
     CMake Error at cmake/Dependencies.cmake:926 (if):
-    if given arguments:
+      if given arguments:
 
-    "VERSION_LESS" "3"
+        "VERSION_LESS" "3"
 
-    Unknown arguments specified
+      Unknown arguments specified
+### Optionally adjust `${PYTORCH_SRC_DIR}/build/CMakeCache.txt`
 #### CMAKE_BUILD_TYPE 
 The environmental variable `DEBUG=1`, sets `CMAKE_BUILD_TYPE=Debug` to build libraries with debug symbols
 #### BUILD_SHARED_LIBS
@@ -42,9 +46,6 @@ The build generates shared libraries by default. This can be disabled by setting
     cmake --build ../pytorch/build
 ### Location of built libraries
     pytorch/build/lib
-### CMAKE_CXX_FLAGS
-#### GCC
-`-Og` enables optimizations that do not interfere with debugging. [CMakeList.txt](CMakeList.txt) adjusts `${PYTORCH_SRC_DIR}/CMakeLists.txt` when necessary
 ### Cleaning / trouble-shooting
 #### Linux
     rm build/CMakeCache.txt
