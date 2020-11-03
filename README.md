@@ -21,10 +21,10 @@ This CMakeLists.txt manages the building of a minimal PyTorch library from [PyTo
 ## Usage
 ### Generate the project buildsystem
     cmake -S . -B build
-#### [CMakeList.txt](CMakeList.txt) adjusts the following in `${PYTORCH_SRC_DIR}/CMakeLists.txt`
+#### [CMakeLists.txt](CMakeLists.txt) adjusts the following in `${PYTORCH_SRC_DIR}/CMakeLists.txt`
 ##### GCC
-`-Og` enables optimizations that do not interfere with debugging. This replaces in -O2 in CMAKE_CXX_FLAGS
-#### [CMakeList.txt](CMakeList.txt) adjusts the following in `${PYTORCH_SRC_DIR}/cmake/Dependencies.cmake`
+`-Og` enables optimizations that do not interfere with debugging. This replaces `-O2` in `CMAKE_CXX_FLAGS`
+#### [CMakeLists.txt](CMakeLists.txt) adjusts the following in `${PYTORCH_SRC_DIR}/cmake/Dependencies.cmake`
 #### Remove deprecated `find_package(PythonLibs 3.0)`
 This avoids the following error -
 
